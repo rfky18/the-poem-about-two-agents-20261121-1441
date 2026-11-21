@@ -19,6 +19,9 @@ POEM = (
 
 
 def main() -> None:
+    text = POEM.strip()
+    if not text or not 1 <= len(POEM) <= 280:
+        raise SystemExit("entry must be 1-280 characters of non-blank text")
     out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "entry.txt").write_text(POEM, encoding="utf-8")
